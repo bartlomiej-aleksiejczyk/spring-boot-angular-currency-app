@@ -27,7 +27,7 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: value
+                  name: exchange_value
                   type: DOUBLE
                   constraints:
                     nullable: false

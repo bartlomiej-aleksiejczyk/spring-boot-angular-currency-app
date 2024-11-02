@@ -1,7 +1,6 @@
 package com.example.currencyinfoapp.exchangerate;
 
 import java.time.LocalDateTime;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,6 +10,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import com.example.currencyinfoapp.exchangerate.dtos.ExchangeRateDTO;
+
 
 @Entity
 @Getter
@@ -32,5 +34,9 @@ public class ExchangeRateQueryEntity {
     private LocalDateTime date;
 
     @Column(nullable = false)
-    private double value;
+    private double exchangeValue;
+
+    public ExchangeRateDTO toDTO() {
+        return new ExchangeRateDTO(currency, name, date, exchangeValue);
+    }
 }
