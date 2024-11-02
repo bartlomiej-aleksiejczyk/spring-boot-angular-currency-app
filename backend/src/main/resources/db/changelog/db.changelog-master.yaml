@@ -4,7 +4,7 @@ databaseChangeLog:
       author: your_name
       changes:
         - createTable:
-            tableName: exchange_rate_invoice_entity
+            tableName: exchange_rate_query_entity
             columns:
               - column:
                   name: id
