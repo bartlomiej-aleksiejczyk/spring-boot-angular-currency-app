@@ -24,10 +24,10 @@ public class ExchangeRateQueryEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 255)
     private String currency;
 
-    @Column(length = 100)
+    @Column(length = 255)
     private String name;
 
     @Column(nullable = false)

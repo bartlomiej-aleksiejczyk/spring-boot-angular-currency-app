@@ -15,12 +15,12 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: currency
-                  type: VARCHAR(50)
+                  type: VARCHAR(255)
                   constraints:
                     nullable: false
               - column:
                   name: name
-                  type: VARCHAR(100)
+                  type: VARCHAR(255)
               - column:
                   name: date
                   type: TIMESTAMP
