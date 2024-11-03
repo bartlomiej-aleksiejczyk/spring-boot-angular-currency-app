@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { ExchangeRateViewComponent } from './features/exchange-rate-view/exchange-rate-view.component';
+import { AppQueriesViewComponent } from './features/app-queries-view/app-queries-view.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, ExchangeRateViewComponent, AppQueriesViewComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
   title = 'currencyinfoapp';
