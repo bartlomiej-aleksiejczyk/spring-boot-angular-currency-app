@@ -1,1 +1,21 @@
-<p>app-queries-view works!</p>
+<div>
+  <h2>Previous Exchange Rate Queries</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Currency</th>
+        <th>Name</th>
+        <th>Date</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let query of queries">
+        <td>{{ query.currency }}</td>
+        <td>{{ query.name }}</td>
+        <td>{{ query.date | date : "short" }}</td>
+        <td>{{ query.value }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
