@@ -1,1 +1,11 @@
-<p>exchange-rate-view works!</p>
+<div>
+  <h2>Get Exchange Rate</h2>
+  <form (submit)="getExchangeRate()">
+    <label
+      >Currency Code: <input [(ngModel)]="currency" name="currency"
+    /></label>
+    <label>Name: <input [(ngModel)]="name" name="name" /></label>
+    <button type="submit">Get Rate</button>
+  </form>
+  <p *ngIf="exchangeRate">Exchange Rate: {{ exchangeRate }}</p>
+</div>
