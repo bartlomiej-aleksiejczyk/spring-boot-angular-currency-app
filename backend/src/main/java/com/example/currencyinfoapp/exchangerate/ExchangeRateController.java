@@ -2,14 +2,13 @@ package com.example.currencyinfoapp.exchangerate;
 
 import java.util.List;
 
+import lombok.RequiredArgsConstructor;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
 
-import lombok.RequiredArgsConstructor;
-
-import com.example.currencyinfoapp.exchangerate.dtos.ExchangeRateDTO;
+import com.example.currencyinfoapp.exchangerate.dtos.ExchangeRateQueryDTO;
 import com.example.currencyinfoapp.exchangerate.dtos.ExchangeRateRequestDTO;
 import com.example.currencyinfoapp.exchangerate.dtos.ExchangeRateResponseDTO;
 
@@ -24,13 +23,12 @@ public class ExchangeRateController {
     @ResponseStatus(HttpStatus.OK)
     public ExchangeRateResponseDTO getCurrentCurrencyValue(
             @Valid @RequestBody ExchangeRateRequestDTO request) {
-        System.out.println(request);
         return exchangeRateService.getExchangeRate(request);
     }
 
-    @GetMapping("/queries")
+    @GetMapping("/requests")
     @ResponseStatus(HttpStatus.OK)
-    public List<ExchangeRateDTO> getAllCurrencyQueries() {
+    public List<ExchangeRateQueryDTO> getAllCurrencyQueries() {
         return exchangeRateService.getAllQueries();
     }
 }
