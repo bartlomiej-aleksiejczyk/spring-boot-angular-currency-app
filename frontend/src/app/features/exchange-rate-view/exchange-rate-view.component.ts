@@ -21,6 +21,7 @@ export class ExchangeRateViewComponent {
   private apiService = inject(ApiService);
   exchangeRate?: number;
   errorMessage?: string;
+  loading = false;
   form: FormGroup;
 
   constructor(private fb: FormBuilder) {
@@ -31,6 +32,7 @@ export class ExchangeRateViewComponent {
           Validators.required,
           Validators.minLength(1),
           Validators.maxLength(255),
+          Validators.pattern('.*\\S.*'),
         ],
       ],
       name: [
@@ -39,6 +41,7 @@ export class ExchangeRateViewComponent {
           Validators.required,
           Validators.minLength(1),
           Validators.maxLength(255),
+          Validators.pattern('.*\\S.*'),
         ],
       ],
     });
@@ -46,24 +49,29 @@ export class ExchangeRateViewComponent {
 
   getExchangeRate() {
     if (this.form.valid) {
+      this.loading = true;
       this.apiService.getCurrentCurrencyValue(this.form.value).subscribe({
         next: (response) => {
           this.exchangeRate = response.value;
           this.errorMessage = undefined;
+          this.loading = false;
         },
         error: (error) => {
-          if (error.error?.status == '404') {
-            this.errorMessage = error.error?.detail;
-          } else {
-            this.errorMessage =
-              'Error fetching exchange rate. Please try again.';
-          }
-
-          console.error('Error:', error);
+          this.errorMessage =
+            error.error?.status == '404'
+              ? error.error?.detail
+              : 'Error fetching exchange rate. Please try again.';
+          this.loading = false;
         },
       });
     } else {
       this.errorMessage = 'Please fill out all fields correctly.';
     }
+  }
+  resetTouchedFields() {
+    this.form.markAsUntouched();
+    Object.keys(this.form.controls).forEach((control) => {
+      this.form.get(control)?.markAsUntouched();
+    });
   }
 }

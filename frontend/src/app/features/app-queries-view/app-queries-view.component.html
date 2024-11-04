@@ -1,31 +1,34 @@
 <div>
   <h2>Previous Exchange Rate Queries</h2>
   <button (click)="fetchQueries()">Refetch All Queries</button>
-
-  @if (errorMessage) {
-  <p class="error">{{ errorMessage }}</p>
-  } @if (emptyMessage) {
-  <p>{{ emptyMessage }}</p>
-  } @if (queries.length > 0) {
-  <table>
-    <thead>
-      <tr>
-        <th>Currency</th>
-        <th>Name</th>
-        <th>Date</th>
-        <th>Value</th>
-      </tr>
-    </thead>
-    <tbody>
-      @for (query of queries; track query) {
-      <tr>
-        <td>{{ query.currency }}</td>
-        <td>{{ query.name }}</td>
-        <td>{{ query.date | date : "short" }}</td>
-        <td>{{ query.value }}</td>
-      </tr>
-      }
-    </tbody>
-  </table>
-  }
+  <div class="query-container">
+    @if (loading) {
+    <div class="spinner"></div>
+    } @if (errorMessage) {
+    <p class="error">{{ errorMessage }}</p>
+    } @if (emptyMessage) {
+    <p>{{ emptyMessage }}</p>
+    } @if (!loading && queries.length > 0) {
+    <table>
+      <thead>
+        <tr>
+          <th>Currency</th>
+          <th>Name</th>
+          <th>Date</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (query of queries; track query) {
+        <tr>
+          <td>{{ query.currency }}</td>
+          <td>{{ query.name }}</td>
+          <td>{{ query.date | date : "short" }}</td>
+          <td>{{ query.value }}</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+    }
+  </div>
 </div>

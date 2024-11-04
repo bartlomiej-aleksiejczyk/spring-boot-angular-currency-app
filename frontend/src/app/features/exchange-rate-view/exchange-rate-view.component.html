@@ -14,6 +14,8 @@
         <small>Currency is required.</small>
         } @if (form.controls['currency'].errors?.['maxlength']) {
         <small>Currency must be less than 255 characters.</small>
+        } @if (form.controls['currency'].errors?.['pattern']) {
+        <small>Name cannot contain only spaces.</small>
         }
       </div>
       }
@@ -26,16 +28,21 @@
         <small>Name is required.</small>
         } @if (form.controls['name'].errors?.['maxlength']) {
         <small>Name must be less than 255 characters.</small>
+        } @if (form.controls['name'].errors?.['pattern']) {
+        <small>Name cannot contain only spaces.</small>
         }
       </div>
-      }</label
-    >
-    <button type="submit" [disabled]="form.invalid">Get Rate</button>
+      }
+    </label>
+
+    <button type="submit" [disabled]="loading">Get Exchange Rate</button>
   </form>
 
   @if (exchangeRate) {
   <p>Exchange Rate: {{ exchangeRate }}</p>
   } @if (errorMessage) {
-  <p class="error">{{ errorMessage }}</p>
+  <p class="text-error">{{ errorMessage }}</p>
+  } @if(loading){
+  <div class="spinner"></div>
   }
 </div>

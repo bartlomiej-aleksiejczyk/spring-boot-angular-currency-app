@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+
 import { ExchangeRateViewComponent } from './features/exchange-rate-view/exchange-rate-view.component';
 import { AppQueriesViewComponent } from './features/app-queries-view/app-queries-view.component';
 
