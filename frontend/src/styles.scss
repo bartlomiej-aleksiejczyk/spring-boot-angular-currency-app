@@ -29,6 +29,8 @@ button {
   border-radius: 5px;
   transition: background-color 0.3s ease, color 0.3s ease;
   color: $text-color;
+  cursor: pointer;
+
   &:hover {
     background-color: lighten($background-color, 10);
   }
