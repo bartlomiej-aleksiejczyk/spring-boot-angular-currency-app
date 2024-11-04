@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { By } from '@angular/platform-browser';
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
 
 import { ApiService } from '../../core/services/api.service';
 import { AppQueriesViewComponent } from './app-queries-view.component';
@@ -56,6 +56,31 @@ describe('AppQueriesViewComponent', () => {
       'Unable to fetch queries. Please try again later.'
     );
   });
+  it('should call fetchQueries on ngOnInit', () => {
+    spyOn(component, 'fetchQueries');
+    component.ngOnInit();
+    expect(component.fetchQueries).toHaveBeenCalled();
+  });
+  it('should display errorMessage if fetch fails', () => {
+    apiServiceSpy.getAllCurrencyQueries.and.returnValue(
+      throwError(() => new Error('Fetch error'))
+    );
+    component.fetchQueries();
+    expect(component.loading).toBeFalse();
+    expect(component.errorMessage).toBe(
+      'Unable to fetch queries. Please try again later.'
+    );
+    expect(component.queries).toEqual([]);
+  });
+  it('should display emptyMessage if no queries are found', () => {
+    apiServiceSpy.getAllCurrencyQueries.and.returnValue(of([]));
+
+    component.fetchQueries();
+    expect(component.loading).toBeFalse();
+    expect(component.queries).toEqual([]);
+    expect(component.emptyMessage).toBe('No queries found.');
+  });
+
   it('should render loading spinner when loading is true', () => {
     component.loading = true;
     fixture.detectChanges();
@@ -67,7 +92,7 @@ describe('AppQueriesViewComponent', () => {
     const mockData = [
       {
         currency: 'USD',
-        name: 'Test',
+        name: 'John Doe',
         date: '2025-12-19T00:00:00Z',
         value: 1.23,
       },

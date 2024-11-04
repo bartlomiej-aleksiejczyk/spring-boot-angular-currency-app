@@ -3,16 +3,16 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environment/environment';
 import { Observable } from 'rxjs';
 
-interface ExchangeRateRequestDTO {
+export interface ExchangeRateRequestDTO {
   currency: string;
   name: string;
 }
 
-interface ExchangeRateResponseDTO {
+export interface ExchangeRateResponseDTO {
   value: number;
 }
 
-interface ExchangeRateQueryDTO {
+export interface ExchangeRateQueryDTO {
   currency: string;
   name: string;
   date: string;
