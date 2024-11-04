@@ -68,10 +68,4 @@ export class ExchangeRateViewComponent {
       this.errorMessage = 'Please fill out all fields correctly.';
     }
   }
-  resetTouchedFields() {
-    this.form.markAsUntouched();
-    Object.keys(this.form.controls).forEach((control) => {
-      this.form.get(control)?.markAsUntouched();
-    });
-  }
 }
