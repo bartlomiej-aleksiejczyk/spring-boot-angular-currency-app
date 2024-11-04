@@ -49,4 +49,34 @@ describe('AppComponent', () => {
     );
     expect(exchangeRateComponent).toBeFalsy();
   });
+  it('should set activeTab to "exchangeRate" when showExchangeRate is called', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+
+    fixture.componentInstance.showExchangeRate();
+    expect(fixture.componentInstance.activeTab).toBe('exchangeRate');
+  });
+
+  it('should render ExchangeRateViewComponent when activeTab is "exchangeRate"', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+
+    fixture.componentInstance.activeTab = 'exchangeRate';
+    fixture.detectChanges();
+
+    const exchangeRateComponent = fixture.debugElement.query(
+      By.directive(ExchangeRateViewComponent)
+    );
+    expect(exchangeRateComponent).toBeTruthy();
+  });
+
+  it('should render AppQueriesViewComponent when activeTab is "queries"', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+
+    fixture.componentInstance.activeTab = 'queries';
+    fixture.detectChanges();
+
+    const queriesComponent = fixture.debugElement.query(
+      By.directive(AppQueriesViewComponent)
+    );
+    expect(queriesComponent).toBeTruthy();
+  });
 });
