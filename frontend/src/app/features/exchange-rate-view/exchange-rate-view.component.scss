@@ -1,0 +1,30 @@
+@use "../../../variables" as *;
+
+h2 {
+  margin: 0 0 1rem 0;
+  padding: 0;
+}
+.exchange-rate-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.exchange-rate-container__form {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+}
+
+label {
+  min-height: 4rem;
+}
+
+.input-error-container {
+  text-align: left;
+  width: calc(100% - 2rem);
+  margin: -0.5rem auto auto auto;
+  small {
+    color: $text-color-error;
+  }
+}

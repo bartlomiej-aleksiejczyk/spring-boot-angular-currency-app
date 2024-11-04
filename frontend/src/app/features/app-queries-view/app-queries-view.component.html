@@ -1,5 +1,12 @@
 <div>
   <h2>Previous Exchange Rate Queries</h2>
+  <button (click)="fetchQueries()">Refetch All Queries</button>
+
+  @if (errorMessage) {
+  <p class="error">{{ errorMessage }}</p>
+  } @if (emptyMessage) {
+  <p>{{ emptyMessage }}</p>
+  } @if (queries.length > 0) {
   <table>
     <thead>
       <tr>
@@ -10,12 +17,15 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let query of queries">
+      @for (query of queries; track query) {
+      <tr>
         <td>{{ query.currency }}</td>
         <td>{{ query.name }}</td>
         <td>{{ query.date | date : "short" }}</td>
         <td>{{ query.value }}</td>
       </tr>
+      }
     </tbody>
   </table>
+  }
 </div>

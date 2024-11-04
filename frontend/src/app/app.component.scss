@@ -1,0 +1,41 @@
+@use "../variables" as *;
+
+.app-container {
+  color: $text-color;
+  font-family: Arial, sans-serif;
+  max-width: 768px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+
+  .active {
+    &:hover {
+      background-color: darken($primary-color, 10);
+    }
+    background-color: $primary-color;
+    outline-offset: -1px;
+    outline: 3px solid darken($primary-color, 10);
+    color: $text-color-on-primary;
+  }
+}
+
+.tab-content {
+  background-color: $tab-background;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px $box-shadow-color;
+  padding: 2rem;
+  display: flex;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}

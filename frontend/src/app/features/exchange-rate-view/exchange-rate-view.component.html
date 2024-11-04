@@ -1,11 +1,41 @@
-<div>
+<div class="exchange-rate-container">
   <h2>Get Exchange Rate</h2>
-  <form (submit)="getExchangeRate()">
-    <label
-      >Currency Code: <input [(ngModel)]="currency" name="currency"
-    /></label>
-    <label>Name: <input [(ngModel)]="name" name="name" /></label>
-    <button type="submit">Get Rate</button>
+  <form
+    class="exchange-rate-container__form"
+    [formGroup]="form"
+    (ngSubmit)="getExchangeRate()"
+  >
+    <label>
+      <input formControlName="currency" placeholder="Currency Code" />
+      @if (form.controls['currency'].invalid &&
+      form.controls['currency'].touched) {
+      <div class="input-error-container">
+        @if (form.controls['currency'].errors?.['required']) {
+        <small>Currency is required.</small>
+        } @if (form.controls['currency'].errors?.['maxlength']) {
+        <small>Currency must be less than 255 characters.</small>
+        }
+      </div>
+      }
+    </label>
+    <label>
+      <input formControlName="name" placeholder="Your Name" />
+      @if (form.controls['name'].invalid && form.controls['name'].touched) {
+      <div class="input-error-container">
+        @if (form.controls['name'].errors?.['required']) {
+        <small>Name is required.</small>
+        } @if (form.controls['name'].errors?.['maxlength']) {
+        <small>Name must be less than 255 characters.</small>
+        }
+      </div>
+      }</label
+    >
+    <button type="submit" [disabled]="form.invalid">Get Rate</button>
   </form>
-  <p *ngIf="exchangeRate">Exchange Rate: {{ exchangeRate }}</p>
+
+  @if (exchangeRate) {
+  <p>Exchange Rate: {{ exchangeRate }}</p>
+  } @if (errorMessage) {
+  <p class="error">{{ errorMessage }}</p>
+  }
 </div>

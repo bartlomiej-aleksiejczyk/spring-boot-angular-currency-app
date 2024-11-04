@@ -11,5 +11,14 @@ import { AppQueriesViewComponent } from './features/app-queries-view/app-queries
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'currencyinfoapp';
+  title = 'Currency Info';
+  activeTab: 'exchangeRate' | 'queries' = 'exchangeRate';
+
+  showExchangeRate() {
+    this.activeTab = 'exchangeRate';
+  }
+
+  showQueries() {
+    this.activeTab = 'queries';
+  }
 }

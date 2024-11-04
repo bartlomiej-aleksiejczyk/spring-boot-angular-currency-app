@@ -1,3 +1,23 @@
-<h1>Exchange Rate App</h1>
-<app-exchange-rate-view></app-exchange-rate-view>
-<app-queries-view></app-queries-view>
+<div class="app-container">
+  <h1>{{ title }}</h1>
+
+  <div class="tabs">
+    <button
+      [class.active]="activeTab === 'exchangeRate'"
+      (click)="showExchangeRate()"
+    >
+      Exchange Rate
+    </button>
+    <button [class.active]="activeTab === 'queries'" (click)="showQueries()">
+      Previous Queries
+    </button>
+  </div>
+
+  <div class="tab-content">
+    @if (activeTab === 'exchangeRate') {
+    <app-exchange-rate-view class="main-container"></app-exchange-rate-view>
+    } @if (activeTab === 'queries') {
+    <app-queries-view class="main-container"></app-queries-view>
+    }
+  </div>
+</div>
