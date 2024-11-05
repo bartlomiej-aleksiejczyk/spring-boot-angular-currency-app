@@ -1,5 +1,16 @@
 # Currency App - instrukcja uruchomienia deweloperskiego dla systemu Linux
 
+## Wersja live na AWS
+
+* Dokumentacja API w formie OpenAPI pod linkiem:
+``` 
+http://currency-info-app.eu-north-1.elasticbeanstalk.com/swagger-ui/index.html
+```
+* Frontend aplikacji (skomunikowany z backendem):
+```
+http://currency-info-app.s3-website.eu-north-1.amazonaws.com/
+```
+
 ## Warunki wstępne
 1. Zainstalowane JDK w wersji 21
 2. Zainstalowane cli dla angulara 18
@@ -30,3 +41,4 @@ Należy przejść do folderu "frontend" w projekcie i użyć komendy:
 ```
 ng test
 ```
+
