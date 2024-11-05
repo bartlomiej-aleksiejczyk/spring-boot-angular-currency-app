@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-import { ApiService } from './api.service';
 import { provideHttpClient } from '@angular/common/http';
 import {
   provideHttpClientTesting,
@@ -9,6 +8,7 @@ import {
   ExchangeRateRequestDTO,
   ExchangeRateResponseDTO,
   ExchangeRateQueryDTO,
+  ApiService,
 } from './api.service';
 import { environment } from '../../../environment/environment';
 
