@@ -13,7 +13,7 @@ http://currency-info-app.s3-website.eu-north-1.amazonaws.com/
 
 ## Warunki wstępne
 1. Zainstalowane JDK w wersji 21
-2. Zainstalowane cli dla angulara 18
+2. Zainstalowane cli dla angulara 17.3.3
 3. Odpowiednio skonfigurowane środowisko we front-endzie w pliku "frontend/src/environment/environment.ts"
 
 ## Uruchomienie
